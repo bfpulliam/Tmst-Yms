@@ -29,7 +29,7 @@ app.use(passport.initialize());
 require("./config/passport")(passport);
 // Routes
 app.use("/api/users", users);
-app.user("/api/data", data);
+app.use("/api/data", data);
 
 //Serve static items when in production
 if(process.env.NODE_ENV === "production") {
