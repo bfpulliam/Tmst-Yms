@@ -1,4 +1,4 @@
-import React, { Component, useLayoutEffect } from "react";
+import React, { Component} from "react";
 import axios from 'axios';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -23,9 +23,8 @@ const rows = [
 
 class TrailersDb extends Component {
     // initialize our state
-    constructor() {
-        super();
-        this.state = {
+   
+        state = {
         data: [],
         id: 0,
         message: null,
@@ -34,7 +33,7 @@ class TrailersDb extends Component {
         idToUpdate: null,
         objectToUpdate: null,
         };
-    }
+
     // when component mounts, first thing it does is fetch all existing data in our db
     // then we incorporate a polling logic so that we can easily see if our db has
     // changed and implement those changes into our UI
