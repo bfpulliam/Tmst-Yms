@@ -5,7 +5,6 @@ class Landing extends Component {
     render() {
         return (
         <div>
-                <div class="nav-wrapper"></div>
                 <div className="container valign-wrapper">
                 <div className="row">
                     <div className="col s12 center-align">
