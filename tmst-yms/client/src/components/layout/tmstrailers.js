@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useLayoutEffect } from "react";
 import axios from 'axios';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -16,7 +16,9 @@ function createData(id, message, timestamp) {
 }
 
 const rows = [
-    createData(),
+    createData(23, "Arrived Late", "2019/07/04"),
+    createData(2690, "Arrived Late, missing items", "2019 / 03 / 03"),
+    createData(591, "Arrived on time", "2018 / 07 / 04"),
 ];
 
 class TrailersDb extends Component {
@@ -223,9 +225,7 @@ class TrailersDb extends Component {
                         <TableBody>
                             {rows.map(row => (
                                 <TableRow key={row.name}>
-                                    <TableCell component="th" scope="row">
-                                        {row.name}
-                                    </TableCell>
+
                                     <TableCell>{row.id}</TableCell>
                                     <TableCell>{row.message}</TableCell>
                                     <TableCell>{row.timestamp}</TableCell>
