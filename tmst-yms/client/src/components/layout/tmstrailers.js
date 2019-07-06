@@ -63,10 +63,10 @@ class TrailersDb extends Component {
     // our first get method that uses our backend api to
     // fetch data from our data base
     getDataFromDb = () => {
-        axios.get('/api/getData')
+        axios.get('http:localhost:5000/api/getData')
             .then((data) => data.json())
             .then((res) => this.setState({ data: res.data }));
-        return axios.get("/api/getData");
+        return axios.get("http:localhost:5000/api/getData");
     };
 
     // our put method that uses our backend api
@@ -78,11 +78,11 @@ class TrailersDb extends Component {
             ++idToBeAdded;
         }
 
-        axios.post('api/putData', {
+       axios.post('http:localhost:5000api/putData', {
             id: idToBeAdded,
             message: message,
         });
-       return axios.post("/api/putData");
+       return axios.post("http:localhost:5000/api/putData");
     };
 
     // our delete method that uses our backend api
@@ -96,12 +96,12 @@ class TrailersDb extends Component {
             }
         });
 
-        axios.delete('/api/deleteData', {
+        axios.delete('http:localhost:5000/api/deleteData', {
             data: {
                 id: objIdToDelete,
             },
         });
-        return axios.delete("/api/deleteData/");
+        return axios.delete("http:localhost:5000/api/deleteData/");
     };
 
     // our update method that uses our backend api
@@ -115,11 +115,11 @@ class TrailersDb extends Component {
             }
         });
 
-        axios.post('/api/updateData', {
+        axios.post('http:localhost:5000/api/updateData', {
             id: objIdToUpdate,
             update: { message: updateToApply },
         });
-        return axios.post("/api/putData");
+        return axios.post("http:localhost:5000/api/putData");
     };
     onChange = e => {
         this.setState({ [e.target.id]: e.target.value });
