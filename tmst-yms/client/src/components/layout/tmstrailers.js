@@ -23,7 +23,7 @@ const rows = [
 
 class TrailersDb extends Component {
     // initialize our state
-   
+
         state = {
         data: [],
         id: 0,
@@ -90,7 +90,7 @@ class TrailersDb extends Component {
         parseInt(idTodelete);
         let objIdToDelete = null;
         this.state.data.forEach((dat) => {
-            if (dat.id == idTodelete) {
+            if (dat.id === idTodelete) {
                 objIdToDelete = dat._id;
             }
         });
@@ -109,7 +109,7 @@ class TrailersDb extends Component {
         let objIdToUpdate = null;
         parseInt(idToUpdate);
         this.state.data.forEach((data) => {
-            if (data.id == idToUpdate) {
+            if (data.id === idToUpdate) {
                 objIdToUpdate = data._id;
             }
         });
