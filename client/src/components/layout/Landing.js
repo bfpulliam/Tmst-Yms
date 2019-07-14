@@ -14,7 +14,7 @@ class Landing extends Component {
                         <br />
                         <h5>
                         <b>
-                          Transportation Management System Tracking Yard Management System
+                            Transportation Management System Tracking Yard Management System
                         </b>
                         </h5>
                         <br/>
@@ -31,7 +31,7 @@ class Landing extends Component {
                                     className="btn btn-large waves-effect waves-light hoverable  indigo darken-3 pulse"
                             >
                                 Register
-              </Link>
+                </Link>
                         </div>
                         <div className="col s6">
                             <Link
@@ -44,7 +44,7 @@ class Landing extends Component {
                                     className="btn btn-large waves-effect hoverable green lighten-4 black-text pulse"
                         >
                             Log In
-              </Link>
+                </Link>
                         </div>
                     </div>
                 </div>

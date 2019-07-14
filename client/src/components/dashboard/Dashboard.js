@@ -30,7 +30,7 @@ class Dashboard extends Component {
                                 className="btn btn-large waves-effect hoverable green lighten-4 black-text pulse"
                             >
                                 Schedule
-              </Link>
+                            </Link>
                         </h4>
                         <button
                             style={{

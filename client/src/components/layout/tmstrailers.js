@@ -70,18 +70,18 @@ class TrailersDb extends Component {
 
     // our put method that uses our backend api
     // to create new query into our data base
-   putDataToDB = (message) => {
+    putDataToDB = (message) => {
         let currentIds = this.state.data.map((data) => data.id);
         let idToBeAdded = 0;
         while (currentIds.includes(idToBeAdded)) {
             ++idToBeAdded;
         }
 
-       axios.post('http:localhost:5000api/putData', {
+        axios.post('http:localhost:5000api/putData', {
             id: idToBeAdded,
             message: message,
         });
-       return axios.post("http:localhost:5000/api/putData");
+        return axios.post("http:localhost:5000/api/putData");
     };
 
     // our delete method that uses our backend api

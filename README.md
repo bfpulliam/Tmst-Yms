@@ -1,7 +1,6 @@
 # TMST-YMS
 ```
 This is a fullstack MERN application.  It uses a database to give realtime management of your transportation systems.
-
 Within the portal, you can view the trailer movements in a warehouse yard, create a schedule and update the schedule.
 ```
 ## VISIT SITE
