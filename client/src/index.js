@@ -1,14 +1,16 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import { Provider } from 'react-redux';
-import configureStore from './configurestore';
+import { createStore, applyMiddleware } from 'redux';
+import { composeWithDevTools } from 'redux-devtools-extension/logOnlyInProduction';
+import thunk from 'redux-thunk';
+import rootReducer from './reducers';
 
-const store = configureStore();
+const initialState = {};
 
-ReactDOM.render(
-    <Provider store={store}>
-    <App />
-</Provider>,
-    document.getElementById('root'));
+const middleware = [thunk];
+
+const store = createStore(
+    rootReducer,
+    initialState,
+    composeWithDevTools(applyMiddleware(...middleware))
+);
+
+export default store;

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { logoutUser } from "../../actions/authActions";
+import { setCurrentUser, logoutUser } from "../../actions/authActions";
 import {Link} from "react-router-dom";
 
 class Dashboard extends Component {
@@ -52,6 +52,7 @@ class Dashboard extends Component {
     }
 }
 Dashboard.propTypes = {
+    setCurrentUser: PropTypes.func.isRequired,
     logoutUser: PropTypes.func.isRequired,
     auth: PropTypes.object.isRequired
 };
@@ -60,5 +61,5 @@ const mapStateToProps = state => ({
 });
 export default connect(
     mapStateToProps,
-    { logoutUser }
+    { setCurrentUser,  logoutUser }
 )(Dashboard);

@@ -15,13 +15,9 @@ function createData(id, message, timestamp) {
     return { id, message, timestamp };
 }
 
-const rows = [
-    createData(23, "Arrived Late", "2019/07/04"),
-    createData(2690, "Arrived Late, missing items", "2019 / 03 / 03"),
-    createData(591, "Arrived on time", "2018 / 07 / 04"),
-];
+const rows = [];
 
-class TrailersDb extends Component {
+class Schedule extends Component {
     // initialize our state
 
         state = {
@@ -77,7 +73,7 @@ class TrailersDb extends Component {
             ++idToBeAdded;
         }
 
-        axios.post('http:localhost:5000api/putData', {
+        axios.post('http:localhost:5000/api/putData', {
             id: idToBeAdded,
             message: message,
         });
@@ -238,4 +234,4 @@ class TrailersDb extends Component {
     }
 }
 
-export default TrailersDb;
+export default Schedule;

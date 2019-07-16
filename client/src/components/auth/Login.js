@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { loginUser } from "../../actions/authActions";
-import classnames from "classnames";
+
 class Login extends Component {
     constructor() {
         super();
@@ -59,55 +59,56 @@ class Login extends Component {
                                 Don't have an account? <Link to="/register">Register</Link>
                             </p>
                         </div>
-                        <form noValidate onSubmit={this.onSubmit}>
-                            <div className="input-field col s12">
-                                <input
-                                    onChange={this.onChange}
-                                    value={this.state.email}
-                                    error={errors.email}
-                                    id="email"
-                                    type="email"
-                                    className={classnames("", {
-                                        invalid: errors.email || errors.emailnotfound
-                                    })}
-                                />
-                                <label htmlFor="email">Email</label>
-                                <span className="red-text">
-                                    {errors.email}
-                                    {errors.emailnotfound}
-                                </span>
+                        <form className="auth-form" noValidate onSubmit={this.onSubmit}>
+                            <div className="auth-group">
+                                <label>
+                                    <div className="auth-label">Email address</div>
+                                    <input
+                                        onChange={this.onChange}
+                                        value={this.state.email}
+                                        error={errors.email}
+                                        id="email"
+                                        type="email"
+                                        className="auth-input"
+                                    />
+                                    <div className="auth-error">
+                                        {errors.email}
+                                        {errors.emailnotfound}
+                                    </div>
+                                </label>
                             </div>
-                            <div className="input-field col s12">
-                                <input
-                                    onChange={this.onChange}
-                                    value={this.state.password}
-                                    error={errors.password}
-                                    id="password"
-                                    type="password"
-                                    className={classnames("", {
-                                        invalid: errors.password || errors.passwordincorrect
-                                    })}
-                                />
-                                <label htmlFor="password">Password</label><span className="red-text">
-                                    {errors.password}
-                                    {errors.passwordincorrect}
-                                </span>
+
+                            <div className="auth-group">
+                                <label>
+                                    <div className="auth-label">Password</div>
+                                    <input
+                                        onChange={this.onChange}
+                                        value={this.state.password}
+                                        error={errors.password}
+                                        id="password"
+                                        type="password"
+                                        className="auth-input"
+                                    />
+                                    <div className="auth-error">
+                                        {errors.password}
+                                        {errors.passwordincorrect}
+                                    </div>
+                                </label>
                             </div>
-                            <div className="col s12" style={{ paddingLeft: "11.250px" }}>
-                                <button
-                                    style={{
-                                        width: "150px",
-                                        borderRadius: "3px",
-                                        letterSpacing: "1.5px",
-                                        marginTop: "1rem"
-                                    }}
-                                    type="submit"
-                                    className="btn btn-large waves-effect waves-light hoverable indigo darken-3"
-                                >
+
+                            <div>
+                                <button type="submit" className="auth-button">
                                     Login
-                </button>
+            </button>
+                            </div>
+                            <div className="bottom-group">
+                                <Link to="/register" className="link">
+                                    Sign up
+            </Link>
                             </div>
                         </form>
+
+
                     </div>
                 </div>
             </div>

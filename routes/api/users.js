@@ -3,6 +3,7 @@ const router = express.Router();
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const keys = require("../../config/keys");
+const passport = require('passport');
 // Load input validation
 const validateRegisterInput = require("../../validation/register");
 const validateLoginInput = require("../../validation/login");
@@ -20,7 +21,8 @@ router.post("/register", (req, res) => {
     }
     User.findOne({ email: req.body.email }).then(user => {
         if (user) {
-            return res.status(400).json({ email: "Email already exists" });
+            errors.email = 'Email already exists';
+            return res.status(400).json(errors);
         } else {
             const newUser = new User({
                 name: req.body.name,
@@ -58,7 +60,8 @@ router.post("/login", (req, res) => {
     User.findOne({ email }).then(user => {
         // Check if user exists
         if (!user) {
-            return res.status(404).json({ emailnotfound: "Email not found" });
+            errors.email = 'User not found';
+            return res.status(404).json(errors);
         }
         // Check password
         bcrypt.compare(password, user.password).then(isMatch => {
@@ -84,12 +87,22 @@ router.post("/login", (req, res) => {
                     }
                 );
             } else {
-                return res
-                    .status(400)
-                    .json({ passwordincorrect: "Password incorrect" });
+                errors.password = 'Password incorrect';
+                return res.status(400).json(errors);
             }
         });
     });
 });
 
+router.get(
+    '/current',
+    passport.authenticate('jwt', { session: false }),
+    (req, res) => {
+        res.json({
+            id: req.user.id,
+            name: req.user.name,
+            email: req.user.email
+        });
+    }
+);
 module.exports = router;
