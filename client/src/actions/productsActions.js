@@ -11,7 +11,7 @@ import {
 } from "./types";
 
 // Create Product
-export const createProject = productData => dispatch => {
+export const createProduct = productData => dispatch => {
     axios
         .post("/api/products/create", productData)
         .then(res =>

@@ -6,6 +6,7 @@ const path = require("path");
 
 const users = require("./routes/api/users");
 const product = require("./routes/api/products");
+const tasks = require("./routes/api/tasks");
 
 const app = express();
 // Bodyparser middleware
@@ -32,6 +33,7 @@ require("./config/passport")(passport);
 // Routes
 app.use("/api/users", users);
 app.use("/api/products", product);
+app.use("/api/tasks", tasks);
 
 //Serve static items when in production
 if(process.env.NODE_ENV === "production") {

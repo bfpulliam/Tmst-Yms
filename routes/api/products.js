@@ -4,8 +4,8 @@ const passport = require("passport");
 
 const Product = require("../../models/Product");
 
-// @route GET api/projects
-// @desc Get all projects for a specific user
+// @route GET api/products
+// @desc Get all products for a specific user
 // @access Private
 router.get(
     "/",
@@ -13,12 +13,12 @@ router.get(
     async (req, res) => {
         let productsArr = [];
 
-        // Member projects
+        // Member products
         await Product.find({})
             .then(products => {
-                products.map(project => {
+                products.map(product => {
                     product.teamMembers &&
-                        project.teamMembers.map(member => {
+                        product.teamMembers.map(member => {
                             if (member.email == req.user.email) {
                                 productsArr.push(product);
                             }
@@ -33,7 +33,7 @@ router.get(
             email: req.user.email
         };
 
-        // Combine with owner projects
+        // Combine with owner products
         await Product.find({ owner: OWNER })
             .then(products => {
                 let finalArr = [...products, ...productsArr];
@@ -43,8 +43,8 @@ router.get(
     }
 );
 
-// @route GET api/projects/:id
-// @desc Get specific project by id
+// @route GET api/products/:id
+// @desc Get specific product by id
 // @access Private
 router.get(
     "/:id",
@@ -56,8 +56,8 @@ router.get(
     }
 );
 
-// @route POST api/projects/create
-// @desc Create a new project
+// @route POST api/products/create
+// @desc Create a new product
 // @access Private
 router.post(
     "/create",
@@ -79,8 +79,8 @@ router.post(
     }
 );
 
-// @route PATCH api/projects/update
-// @desc Update an existing project
+// @route PATCH api/products/update
+// @desc Update an existing product
 // @access Private
 router.patch(
     "/update",
@@ -103,8 +103,8 @@ router.patch(
     }
 );
 
-// @route DELETE api/projects/delete/:id
-// @desc Delete an existing project
+// @route DELETE api/products/delete/:id
+// @desc Delete an existing product
 // @access Private
 router.delete(
     "/delete/:id",
