@@ -33,7 +33,7 @@ class Layout extends Component {
             dashboardContent = <Spinner />;
         } else if (products.length > 0) {
             dashboardContent = (
-                <>
+                <div>
                     <SideNav products={products} />
                     <div className="right">
                         <TopNav />
@@ -54,11 +54,11 @@ class Layout extends Component {
                             <Route component={NotFound} />
                         </Switch>
                     </div>
-                </>
+                </div>
             );
         } else {
             dashboardContent = (
-                <>
+                <div>
                     <SideNav />
                     <div className="right">
                         <TopNav />
@@ -73,7 +73,7 @@ class Layout extends Component {
                             <Route component={NotFound} />
                         </Switch>
                     </div>
-                </>
+                </div>
             );
         }
 

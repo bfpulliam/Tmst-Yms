@@ -58,8 +58,7 @@ class TopNav extends Component {
                         onClick={this.toggleMenu}
                         className="material-icons hamburger-top-menu"
                     >
-                        menu
-          </i>
+                        menu </i>
                     <Link to="/dashboard">
                         <h1 className="brand-header">
                             Team<span className="brand-header-sub">s</span>
@@ -82,11 +81,11 @@ class TopNav extends Component {
                                 <Link to="/dashboard">
                                     <li>Home</li>
                                 </Link>
-                                {/*
+                                {
                 <Link to="/tasks">
-                  <li>My Tasks</li>
+                <li>My Tasks</li>
                 </Link>
-                */}
+                }
                                 <li onClick={this.onLogoutClick}>Sign Out</li>
                             </ul>
                         ) : null}

@@ -19,7 +19,7 @@
     "passport-jwt": "^4.0.0",
     "validator": "^11.1.0"
   },
-    "scripts": {
+  "scripts": {
     "client-install": "npm install --prefix client",
     "start": "node server.js",
     "server": "nodemon server.js",
