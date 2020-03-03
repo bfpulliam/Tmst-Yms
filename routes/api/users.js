@@ -27,13 +27,15 @@ router.post("/register", (req, res) => {
             const newUser = new User({
                 name: req.body.name,
                 email: req.body.email,
-                password: req.body.password
+                password: req.body.password,
+                password2: req.body.password2
             });
             // Hash password before saving in database
             bcrypt.genSalt(10, (err, salt) => {
-                bcrypt.hash(newUser.password, salt, (err, hash) => {
+                bcrypt.hash(newUser.password,newUser.password2, salt, (err, hash) => {
                     if (err) throw err;
                     newUser.password = hash;
+                    newUser.password2 = hash;
                     newUser
                         .save()
                         .then(user => res.json(user))
@@ -70,7 +72,8 @@ router.post("/login", (req, res) => {
                 // Create JWT Payload
                 const payload = {
                     id: user.id,
-                    name: user.name
+                    name: user.name,
+                    email: user.email
                 };
                 // Sign token
                 jwt.sign(
@@ -87,22 +90,12 @@ router.post("/login", (req, res) => {
                     }
                 );
             } else {
-                errors.password = 'Password incorrect';
-                return res.status(400).json(errors);
+                return res
+                    .status(400)
+                    .json({ passwordincorrect: "Password incorrect" });
             }
         });
     });
 });
 
-router.get(
-    '/current',
-    passport.authenticate('jwt', { session: false }),
-    (req, res) => {
-        res.json({
-            id: req.user.id,
-            name: req.user.name,
-            email: req.user.email
-        });
-    }
-);
 module.exports = router;

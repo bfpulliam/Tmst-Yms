@@ -34,7 +34,7 @@ Layout.propTypes = {
 
 const mapStateToProps = state => ({
     auth: state.auth,
-    projects: state.projects
+    products: state.products
 });
 
 export default withRouter(

@@ -52,7 +52,7 @@ class Register extends Component {
                         <Link to="/" className="btn-flat waves-effect">
                             <i className="material-icons left">keyboard_backspace</i> Back to
                             home
-            </Link>
+                        </Link>
                         <div className="col s12" style={{ paddingLeft: "11.250px" }}>
                             <h4>
                                 <b>Register</b> below
@@ -127,9 +127,9 @@ class Register extends Component {
                                     }}
                                     type="submit"
                                     className="btn btn-large waves-effect waves-light hoverable indigo darken-3"
-                                ><Link to="/login">Sign up
+                                ><Link to="/">Sign up
                                 </Link>
-                </button>
+                            </button>
                             </div>
                         </form>
                     </div>

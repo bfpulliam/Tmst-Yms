@@ -35,7 +35,7 @@ class Landing extends Component {
                         </div>
                         <div className="col s6">
                             <Link
-                                to="/login"
+                                to="/"
                                 style={{
                                     width: "140px",
                                     borderRadius: "3px",

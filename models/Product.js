@@ -1,9 +1,10 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 // Create Schema
-const DataSchema = new Schema({
+const ProductSchema = new Schema({
   id: {
     type: String,
+    required: true
   },
   message: {
     type: String
@@ -15,4 +16,4 @@ const DataSchema = new Schema({
 
 });
 
-module.exports = Data = mongoose.model("data", DataSchema);
+module.exports = Product = mongoose.model("products", ProductSchema);

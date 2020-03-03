@@ -11,7 +11,7 @@ import Paper from '@material-ui/core/Paper';
 
 
 
-function createData(id, message, timestamp) {
+function createProduct(id, message, timestamp) {
     return { id, message, timestamp };
 }
 
@@ -21,7 +21,7 @@ class Schedule extends Component {
     // initialize our state
 
         state = {
-        data: [],
+        product: [],
         id: 0,
         message: null,
         intervalIsSet: false,
@@ -36,7 +36,7 @@ class Schedule extends Component {
     componentDidMount() {
         this.getDataFromDb();
         if (!this.state.intervalIsSet) {
-            let interval = setInterval(this.getDataFromDb, 1000);
+            let interval = setInterval(this.getProductFromDb, 1000);
             this.setState({ intervalIsSet: interval });
         }
     }
@@ -57,46 +57,46 @@ class Schedule extends Component {
 
     // our first get method that uses our backend api to
     // fetch data from our data base
-    getDataFromDb = () => {
-        axios.get('http:localhost:5000/api/getData')
+    getProductFromDb = () => {
+        axios.get('http:localhost:5000/api/getProduct')
             .then((data) => data.json())
             .then((res) => this.setState({ data: res.data }));
-        return axios.get("http:localhost:5000/api/getData");
+        return axios.get("http:localhost:5000/api/getProduct");
     };
 
     // our put method that uses our backend api
     // to create new query into our data base
-    putDataToDB = (message) => {
-        let currentIds = this.state.data.map((data) => data.id);
+    putProductToDB = (message) => {
+        let currentIds = this.state.product.map((data) => data.id);
         let idToBeAdded = 0;
         while (currentIds.includes(idToBeAdded)) {
             ++idToBeAdded;
         }
 
-        axios.post('http:localhost:5000/api/putData', {
+        axios.post('http:localhost:5000/api/putProduct', {
             id: idToBeAdded,
             message: message,
         });
-        return axios.post("http:localhost:5000/api/putData");
+        return axios.post("http:localhost:5000/api/putProduct");
     };
 
     // our delete method that uses our backend api
     // to remove existing database information
-    deleteFromDB = (idTodelete) => {
+    deleteProductFromDB = (idTodelete) => {
         parseInt(idTodelete);
         let objIdToDelete = null;
-        this.state.data.forEach((dat) => {
-            if (dat.id === idTodelete) {
-                objIdToDelete = dat._id;
+        this.state.product.forEach((data) => {
+            if (data.id === idTodelete) {
+                objIdToDelete = data._id;
             }
         });
 
-        axios.delete('http:localhost:5000/api/deleteData', {
+        axios.delete('http:localhost:5000/api/deleteProduct', {
             data: {
                 id: objIdToDelete,
             },
         });
-        return axios.delete("http:localhost:5000/api/deleteData/");
+        return axios.delete("http:localhost:5000/api/deleteProduct/");
     };
 
     // our update method that uses our backend api
@@ -104,25 +104,25 @@ class Schedule extends Component {
     updateDB = (idToUpdate, updateToApply) => {
         let objIdToUpdate = null;
         parseInt(idToUpdate);
-        this.state.data.forEach((data) => {
+        this.state.product.forEach((data) => {
             if (data.id === idToUpdate) {
                 objIdToUpdate = data._id;
             }
         });
 
-        axios.post('http:localhost:5000/api/updateData', {
+        axios.post('http:localhost:5000/api/updateProduct', {
             id: objIdToUpdate,
             update: { message: updateToApply },
         });
-        return axios.post("http:localhost:5000/api/putData");
+        return axios.post("http:localhost:5000/api/putProduct");
     };
     onChange = e => {
         this.setState({ [e.target.id]: e.target.value });
     };
     onSubmit = e => {
         e.preventDefault();
-        const Data = {
-            data: this.state.data,
+        const Product = {
+            product: this.state.data,
             id: this.state.id,
             message: this.state.message,
             intervalIsSet: this.state.intervalIsSet,
@@ -130,8 +130,8 @@ class Schedule extends Component {
             idToUpdate: this.state.idToUpdate,
             objectToUpdate: this.state.objectToUpdate,
         };
-        console.log(Data);
-        this.props.Data(Data);
+        console.log(Product);
+        this.props.Product(Product);
     };
 
     // here is our UI
@@ -149,7 +149,7 @@ class Schedule extends Component {
                         : data.map((data) => (
                             <li style={{ padding: '10px' }} key={data.message}>
                                 <span style={{ color: 'gray' }}> id: </span> {data.id} <br />
-                                <span style={{ color: 'gray' }}> data: </span>
+                                <span style={{ color: 'gray' }}> product: </span>
                                 {data.message}
                             </li>
                         ))}

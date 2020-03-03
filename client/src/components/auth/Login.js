@@ -43,78 +43,63 @@ class Login extends Component {
     };
     render() {
         const { errors } = this.state;
+
         return (
-            <div className="container">
-                <div style={{ marginTop: "4rem"}} className="row">
-                    <div className="col s8 offset-s2">
-                        <Link to="/" className="btn-flat waves-effect">
-                            <i className="material-icons left">keyboard_backspace</i> Back to
-                            home
-            </Link>
-                        <div className="col s12" style={{ paddingLeft: "11.250px" }}>
-                            <h4>
-                                <b>Login</b> below
-                            </h4>
-                            <p className="grey-text text-darken-1">
-                                Don't have an account? <Link to="/register">Register</Link>
-                            </p>
-                        </div>
-                        <form className="auth-form" noValidate onSubmit={this.onSubmit}>
-                            <div className="auth-group">
-                                <label>
-                                    <div className="auth-label">Email address</div>
-                                    <input
-                                        onChange={this.onChange}
-                                        value={this.state.email}
-                                        error={errors.email}
-                                        id="email"
-                                        type="email"
-                                        className="auth-input"
-                                    />
-                                    <div className="auth-error">
-                                        {errors.email}
-                                        {errors.emailnotfound}
-                                    </div>
-                                </label>
+            <div className="base-wrapper">
+                <div className="auth-header">Sign In</div>
+                <form className="auth-form" noValidate onSubmit={this.onSubmit}>
+                    <div className="auth-group">
+                        <label>
+                            <div className="auth-label">Email address</div>
+                            <input
+                                onChange={this.onChange}
+                                value={this.state.email}
+                                error={errors.email}
+                                id="email"
+                                type="email"
+                                className="auth-input"
+                            />
+                            <div className="auth-error">
+                                {errors.email}
+                                {errors.emailnotfound}
                             </div>
-
-                            <div className="auth-group">
-                                <label>
-                                    <div className="auth-label">Password</div>
-                                    <input
-                                        onChange={this.onChange}
-                                        value={this.state.password}
-                                        error={errors.password}
-                                        id="password"
-                                        type="password"
-                                        className="auth-input"
-                                    />
-                                    <div className="auth-error">
-                                        {errors.password}
-                                        {errors.passwordincorrect}
-                                    </div>
-                                </label>
-                            </div>
-
-                            <div>
-                                <button type="submit" className="auth-button">
-                                    Login
-            </button>
-                            </div>
-                            <div className="bottom-group">
-                                <Link to="/register" className="link">
-                                    Sign up
-            </Link>
-                            </div>
-                        </form>
-
-
+                        </label>
                     </div>
-                </div>
+
+                    <div className="auth-group">
+                        <label>
+                            <div className="auth-label">Password</div>
+                            <input
+                                onChange={this.onChange}
+                                value={this.state.password}
+                                error={errors.password}
+                                id="password"
+                                type="password"
+                                className="auth-input"
+                            />
+                            <div className="auth-error">
+                                {errors.password}
+                                {errors.passwordincorrect}
+                            </div>
+                        </label>
+                    </div>
+
+                    <div>
+                        <button type="submit" className="auth-button">
+                            Login
+            </button>
+                    </div>
+                    <div className="bottom-group">
+                        <Link to="/register" className="link">
+                            Sign up
+            </Link>
+                    </div>
+                </form>
             </div>
         );
     }
 }
+
 Login.propTypes = {
     loginUser: PropTypes.func.isRequired,
     auth: PropTypes.object.isRequired,

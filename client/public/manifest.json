@@ -1,4 +1,8 @@
 {
   "short_name": "React App",
-  "name": "TMST-YMS"
+  "name": "TMST-YMS",
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
 }
