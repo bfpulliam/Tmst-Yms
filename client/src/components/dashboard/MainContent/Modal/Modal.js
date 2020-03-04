@@ -25,7 +25,7 @@ class Modal extends Component {
         taskId: ""
     };
 
-    componentWillReceiveProps(nextProps) {
+    UNSAFE_componentWillReceiveProps(nextProps) {
         if (nextProps.edit) {
             this.setState({
                 productName: nextProps.name,
