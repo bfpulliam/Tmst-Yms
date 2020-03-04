@@ -3,6 +3,8 @@ import { Link, withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { registerUser } from "../../actions/authActions";
+import Button from '@material-ui/core/Button';
+import tmbackground from '../../img/tmbackground.jpeg'
 
 class Register extends Component {
     constructor() {
@@ -11,6 +13,7 @@ class Register extends Component {
             name: "",
             email: "",
             password: "",
+            password2: "",
             errors: {}
         };
     }
@@ -40,7 +43,8 @@ class Register extends Component {
         const newUser = {
             name: this.state.name,
             email: this.state.email,
-            password: this.state.password
+            password: this.state.password,
+            password2: this.state.password2
         };
 
         this.props.registerUser(newUser, this.props.history);
@@ -50,6 +54,14 @@ class Register extends Component {
         const { errors } = this.state;
 
         return (
+            <div>
+            <div
+                style={{
+                    backgroundImage: `url(${tmbackground})`,
+                    width: '100px',
+                    height: '100px'
+                }}
+            />
             <div className="base-wrapper">
                 <div className="auth-header">Register Below</div>
                 <form className="auth-form" noValidate onSubmit={this.onSubmit}>
@@ -97,11 +109,24 @@ class Register extends Component {
                             <div className="auth-error">{errors.password}</div>
                         </label>
                     </div>
-
+                    <div className="auth-group">
+                        <label>
+                            <div className="auth-label">Password</div>
+                            <input
+                                onChange={this.onChange}
+                                value={this.state.password2}
+                                error={errors.password2}
+                                id="password2"
+                                type="password2"
+                                className="auth-input"
+                            />
+                            <div className="auth-error">{errors.password2}</div>
+                        </label>
+                    </div>
                     <div>
-                        <button type="submit" className="auth-button">
+                        <Button type="submit" className="auth-button">
                             Sign up
-            </button>
+                        </Button>
                     </div>
                     <div className="bottom-group">
                         <Link to="/" className="link">
@@ -109,6 +134,7 @@ class Register extends Component {
             </Link>
                     </div>
                 </form>
+            </div>
             </div>
         );
     }
